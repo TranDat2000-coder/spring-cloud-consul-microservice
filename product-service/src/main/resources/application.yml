@@ -1,0 +1,41 @@
+
+server:
+  port: 8082
+
+spring:
+  application:
+    name: product-service
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+  config:
+    import: optional:consul:localhost:8500
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/data_test
+    username: root
+    password: 123456789
+
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+
+---
+spring:
+  cloud:
+    consul:
+      discovery:
+        instanceZone: zone1
+  config:
+    activate:
+      on-profile: zone1
+---
+spring:
+  cloud:
+    consul:
+      discovery:
+        instanceZone: zone2
+  config:
+    activate:
+      on-profile: zone2
