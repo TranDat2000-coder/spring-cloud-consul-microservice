@@ -5,12 +5,15 @@ server:
 spring:
   application:
     name: product-service
+
   cloud:
     consul:
       host: localhost
       port: 8500
+
   config:
-    import: optional:consul:localhost:8500
+    import: optional:consul:localhost:8500 # Chỉ định Spring sử dụng Consul để nhập các cấu hình tùy chọn từ localhost:8500,
+    # điều này giúp Spring ứng dụng có thể tải các cấu hình từ Consul
 
   datasource:
     url: jdbc:mysql://localhost:3306/data_test
@@ -21,21 +24,25 @@ logging:
   level:
     org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
 
----
-spring:
-  cloud:
-    consul:
-      discovery:
-        instanceZone: zone1
-  config:
-    activate:
-      on-profile: zone1
----
-spring:
-  cloud:
-    consul:
-      discovery:
-        instanceZone: zone2
-  config:
-    activate:
-      on-profile: zone2
+#---
+#spring:
+#  cloud:
+#    consul: # Thực hiện khám phá service
+#      discovery:
+#        enabled: true
+#        register: true
+#        instanceZone: zone1 # Gán service vào một vùng cụ thể trong consul
+#  config:
+#    activate:
+#      on-profile: zone1 # Kích hoạt các config khi một profile cụ thể được kích hoạt
+#---
+#spring:
+#  cloud:
+#    consul:
+#      discovery:
+#        enabled: true
+#        register: true
+#        instanceZone: zone2
+#  config:
+#    activate:
+#      on-profile: zone2
