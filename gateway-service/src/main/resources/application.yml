@@ -2,15 +2,19 @@
 server:
   port: 9091
 
+app:
+  api-prefix: /api/v1
+
 spring:
   application:
     name: gateway-service
 
   cloud:
     gateway: #Phần cài đặt chính của Spring Cloud Gateway, cung cấp các cấu hình để định tuyến các yêu cầu tới các service khác
-      discovery:
-        locator:
-          enabled: true # Tự động phát hiện và đăng ký các service được quản lý bởi Consul để định tuyến
+#      discovery:
+#        locator:
+#          enabled: true # Tự động phát hiện và đăng ký các service được quản lý bởi Consul để định tuyến
+
       routes:
         - id: account-service
           uri: lb://account-service # URL đích mà Gateway sẽ chuyển tiếp yêu cầu. Sử dụng lb (load balance - Cân bằng tải)

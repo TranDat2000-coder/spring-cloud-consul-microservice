@@ -27,10 +27,10 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) -> requests
-//                        .requestMatchers(new AntPathRequestMatcher("/api/auth/generateToken")).permitAll()
-//                        .requestMatchers(new AntPathRequestMatcher("/api/auth/registration")).permitAll()
-//                        .requestMatchers("/order/**").permitAll()
-                        .anyRequest().permitAll());
+                        .requestMatchers(new AntPathRequestMatcher("/api/auth/generateToken")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/product-api/**")).permitAll()
+                        .requestMatchers("/**").permitAll()
+                        .anyRequest().authenticated());
 //                .userDetailsService(userService);
 //                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();

@@ -20,21 +20,25 @@ spring:
     username: root
     password: 123456789
 
+  jpa:
+    hibernate:
+      ddl-auto: update
+
 logging:
   level:
     org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
 
-#---
-#spring:
-#  cloud:
-#    consul: # Thực hiện khám phá service
-#      discovery:
-#        enabled: true
-#        register: true
-#        instanceZone: zone1 # Gán service vào một vùng cụ thể trong consul
-#  config:
-#    activate:
-#      on-profile: zone1 # Kích hoạt các config khi một profile cụ thể được kích hoạt
+---
+spring:
+  cloud:
+    consul: # Thực hiện khám phá service
+      discovery:
+        enabled: true
+        register: true
+        instanceZone: zone1 # Gán service vào một vùng cụ thể trong consul
+  config:
+    activate:
+      on-profile: zone1 # Kích hoạt các config khi một profile cụ thể được kích hoạt
 #---
 #spring:
 #  cloud:
