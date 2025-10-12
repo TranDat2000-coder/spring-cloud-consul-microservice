@@ -53,9 +53,14 @@ spring:
           predicates:
             - Path=/product/**
           filters:
-#            - RemoveRequestHeader=Authorization
             - RewritePath=/product/(?<path>.*), /$\{path}
 
+        - id: authorization-server
+          uri: lb://authorization-server
+          predicates:
+            - Path=/auth/**
+          filters:
+            - RewritePath=/auth/(?<path>.*), /$\{path}
   main:
     web-application-type: reactive # Thiết lập ứng dụng theo dạng reactive(phản ứng), tức là sử dụng Spring WebFlux thay vì Spring MVC truyền thống
 
