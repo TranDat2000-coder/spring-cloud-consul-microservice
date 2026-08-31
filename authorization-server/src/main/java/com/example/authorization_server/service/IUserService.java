@@ -1,4 +1,6 @@
 package com.example.authorization_server.service;
 
-public class IUserService {
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+public interface IUserService extends UserDetailsService {
 }

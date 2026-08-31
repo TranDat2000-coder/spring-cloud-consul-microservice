@@ -1,0 +1,16 @@
+
+server:
+  port: 8090
+
+spring:
+  application:
+    name: authorization-server
+
+  datasource:
+    url: jdbc:mysql://125.253.121.196:3306/cntt_master_qlbh2025
+    username: dattq
+    password: Dattq@12367
+
+  jpa:
+    hibernate:
+      ddl-auto: update
