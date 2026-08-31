@@ -6,6 +6,17 @@ spring:
   application:
     name: product-service
 
+  datasource:
+    url: jdbc:mysql://localhost:3306/data_test
+    username: root
+    password: 123456789
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:keys/public.pem
+
   cloud:
     consul:
       host: localhost
@@ -19,11 +30,6 @@ spring:
   config:
     import: optional:consul:localhost:8500 # Chỉ định Spring sử dụng Consul để nhập các cấu hình tùy chọn từ localhost:8500,
     # điều này giúp Spring ứng dụng có thể tải các cấu hình từ Consul
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/data_test
-    username: root
-    password: 123456789
 
   jpa:
     hibernate:
